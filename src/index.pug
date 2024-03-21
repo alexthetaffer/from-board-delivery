@@ -1,0 +1,125 @@
+mixin benefit-item(img, title, text)
+	.benefit-item
+		img.benefit-item__image(src="../images/benefits/"+img)
+		.benefit-item__body 
+			.benefit-item__title= title 
+			.benefit-item__text= text
+
+mixin review-item(name, text)
+	.review-item.swiper-slide
+		.review-item__text= text
+		.review-item__name= name
+		img.review-item__quotes(src="../images/icons/quotes.svg")
+
+
+header.header 
+	.container
+		.header__top
+			a.logo(href="/")
+				.logo__icon 
+					img(src="images/logo.svg", alt="")
+				.logo__text FromBoard Delivery
+			.header__info
+				p.header__info-price
+					| Доставляем товары из заграницы в Россию <br>
+					| Стоимостью от 550 руб. за заказ <br>
+					| 1 $ = 93 ₽ | 1 € = 99 ₽ | 1 ¥ = 13 ₽
+				.header__info-phone
+					h1 +7 (800) 123 45-67
+					p Звонки по России бесплатны
+		.header__bottom 
+			.header__nav 
+				a.header__nav-link(href="#") Калькулятор
+				a.header__nav-link(href="#") О нас
+				a.header__nav-link(href="#") Гарантии
+				a.header__nav-link(href="#") Отзывы
+			button.header__button.button Оставить заявку
+main 
+	.container
+		section.hero 
+			.hero__content 
+				.hero__text
+					h1 Безпроблемная доставка купленных вещей из США, Европы и Азии в Россию
+					p Сэкономьте на покупках и наслаждайтесь мировыми брендами — наш сервис позволяет вам легко и удобно заказывать товары со всего мира и получать их в России
+				img.hero__image(src="images/hero.jpg", alt="")
+			.hero__calculator(action="post") 
+				h2 Калькулятор доставки
+				p Посчитайте, сколько будет стоить перевозка <br> покупки из зарубежа
+				form.form(action="post") 
+					input#name(type="text", name="name" placeholder="Имя")
+					input#mail(type="email", name="mail" placeholder="Почта")
+					input#phone(type="tel", name="phone" placeholder="Телефон")
+					input#area(type="text", name="area" placeholder="Общая площадь, м²")
+					input#weight(type="text", name="weight" placeholder="Вес, кг")
+					input#countryIn(type="text", name="countryIn" placeholder="Страна покупки")
+					input#cityIn(type="text", name="cityIn" placeholder="Город покупки")
+					input#deliveryCountry(type="text", name="deliveryCountry" placeholder="Область доставки")
+					input#deliveryCity(type="text", name="deliveryCity" placeholder="Город доставки")
+					button.button Заказать расчет
+		section.benefits
+			h2 Наши преимущества
+			.benefits__grid-container 
+				+benefit-item("notebook.svg", "Растоможка груза", "Мы берём на себя все формальности и бумажную волокиту, связанную с растаможкой груза")
+				+benefit-item("package.svg", "Надежная упаковка", "Все товары упаковываются нашими специалистами с особым вниманием к деталям, гарантируя, что они дойдут в безопасности и в отличном состоянии")
+				+benefit-item("delivery.svg", "Быстро и выгодно", "Мы предлагаем быструю и выгодную доставку, чтобы вы могли насладиться покупками как можно скорее")
+				+benefit-item("best-support.svg", "Удобный сервис", "Стремимся сделать процесс доставки максимально удобным для вас, чтобы опыт остался приятным и беззаботным")
+				+benefit-item("clear-info.svg", "Прозрачность работы", "Мы предоставляем полный контроль над каждым этапом доставки, от момента заказа до момента прибытия заказа")
+				+benefit-item("guarantee.svg", "Страхование груза", "Наше страхование обеспечивает полную защиту и покрытие почти все неприятные и неожиданные ситуации")
+		section.guarantee
+			h2 Гарантии качества
+			p Наши гарантии качества включают в себя полный спектр документов, необходимых для ввоза и вывоза товаров, а также для успешного бизнеса на мировом рынке. Мы предоставляем вам надёжность и уверенность
+			.guarantee__document-container
+				a.guarantee__document-item(href="../images/documents/1.png" data-fancybox="documents" data-caption="Свидетельство о регистрации в РФ")
+					img(src="../images/documents/1.png", alt="")
+				a.guarantee__document-item(href="../images/documents/2.png" data-fancybox="documents" data-caption="Свидетельство о регистрации в США")
+					img(src="../images/documents/2.png", alt="")
+				a.guarantee__document-item(href="../images/documents/3.png" data-fancybox="documents" data-caption="Свидетельство о регистрации в Китае")
+					img(src="../images/documents/3.png", alt="")
+				a.guarantee__document-item(href="../images/documents/4.png" data-fancybox="documents" data-caption="Свидетельство о регистрации в Великобритании")
+					img(src="../images/documents/4.png", alt="")
+		section.reviews 
+			h2 Отзывы
+			.reviews__slider.swiper-container
+				.swiper-wrapper
+					+review-item("Анна", "Я заказала последний iPhone из США через ваш сервис, и доставка прошла быстро и без каких‑либо проблем. Гарантии качества и надёжная упаковка сделали мой опыт покупки невероятно позитивным")
+					+review-item("Ольга", "Я уже несколько лет заказываю дизайнерскую одежду из Франции через ваш сервис, и он никогда меня не подводил. Важно иметь надёжную компанию, которая позаботится о вашем заказе и предоставит все необходимые документы для ввоза в Россию")
+					+review-item("Игорь", "Заказал шикарные часы из Швейцарии, и доставка была невероятно быстрой. Ваш сервис делает интернет-шоппинг более доступным и удобным")
+					+review-item("Екатерина", "Ваш сервис действительно изменил мой способ покупок. Я больше не переживаю о таможенных вопросах и документах - все у вас в порядке. Спасибо за ваше качество и надежность")
+					+review-item("Дмитрий", "Я заказал редкий антикварный предмет из Японии через ваш сервис, и остался впечатлен. Все пришло в отличном состоянии, и ваша гарантия качества действительно работает. Спасибо за ваше профессиональное обслуживание")
+				button.swiper-button-prev.icon-button
+					img(src="/images/icons/arrow-circle-left.svg", alt="")
+				button.swiper-button-next.icon-button
+					img(src="/images/icons/arrow-circle-right.svg", alt="")
+		section.contact 
+			h2 Остались вопросы?
+			form.form.contact__form
+				input#name(type="text", name="" placeholder="Имя")
+				input#mail(type="email", name="" placeholder="Почта")
+				input#phone(type="tel", name="" placeholder="Телефон")
+				input#theme(type="text", name="" placeholder="Тема вопроса")
+				textarea#message(name="", cols="30", rows="10" placeholder="Сообщение...") 
+				button.contact__form__button.button Оставить заявку
+footer.footer
+	.container
+		.footer__top 
+			.footer__top-left 
+				.logo.footer__logo.logo--light
+					.logo__icon 
+						img(src="images/logo.svg", alt="")
+					.logo__text FromBoard Delivery
+				p.footer__copy 2023 © Ни одно право не защищено, копируйте сколько влезет
+			.footer__nav
+				a.footer__nav-link(href="#") Калькулятор
+				a.footer__nav-link(href="#") О нас
+				a.footer__nav-link(href="#") Гарантии
+				a.footer__nav-link(href="#") Отзывы
+
+			.footer__phone
+				h1 +7 (800) 123 45-67
+				p Звонки по России бесплатны
+		.footer__bottom 
+			.footer__bottom-left 
+				p НЕ ЯВЛЯЕТСЯ ПУБЛИЧНОЙ ОФЕРТОЙ. Просим обратить внимание на то, что цены носят информационный и ознакомительный характер, а значит ни в какой мере не являются публичной офертой, которая определена в ст. 437 ГК РФ. Вся информация на сайте может содержать неточности, орфографические и иные ошибки, она не является полной, окончательно и исчерпывающей
+			.footer__bottom-right 
+				p Разработкой макета занимался
+				p <a href="/" target="_blank">Васильев Александр</a> | <a href="/" target="_blank">Что-то на IT’шном</a>
