@@ -6,6 +6,8 @@ import "swiper/css";
 import "./style.scss";
 
 const BREAKPOINT_MD = 1024;
+const menuButton = document.querySelector(".menu-button")
+const mobileMenu = document.querySelector(".header__rollout")
 
 const reviewsSlider = new Swiper(".swiper-container", {
     spaceBetween: 24,
@@ -20,5 +22,9 @@ const reviewsSlider = new Swiper(".swiper-container", {
         }
     }
 });
+
+menuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('header__rollout--show')
+})
 
 Fancybox.bind();
