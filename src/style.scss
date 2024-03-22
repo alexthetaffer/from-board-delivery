@@ -32,11 +32,12 @@ body {
     }
 
     .container {
-        max-width: $breakpoint-lg;
+        max-width: calc($breakpoint-lg + (15px * 2));
         margin: 0 auto;
+        padding: 0 15px;
 
         @media screen and (max-width: $breakpoint-lg) {
-          max-width: 1026px;
+            max-width: calc($breakpoint-md + (15px * 2));
         }
     }
 
@@ -125,8 +126,7 @@ body {
     }
 
     &__info {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        display: flex;
     }
 
     &__info-price {
@@ -145,12 +145,22 @@ body {
             font-size: 36px;
             line-height: 40px;
             font-weight: 900;
+
+            @media screen and (max-width: $breakpoint-lg) {
+                font-size: 30px;
+                line-height: 36px;
+            }
         }
 
         p {
             font-size: 24px;
             line-height: 32px;
-            font-weight: 300;
+            font-weight: 400;
+
+            @media screen and (max-width: $breakpoint-lg) {
+                font-size: 20px;
+                line-height: 28px;
+            }
         }
     }
 
@@ -177,7 +187,7 @@ body {
         }
 
         &:active {
-          border-color: $purple-500;
+            border-color: $purple-500;
         }
     }
 }
@@ -186,205 +196,88 @@ main {
     background-color: $gray-200;
     padding: 72px 0;
 
-    .hero {
+    @media screen and (max-width: $breakpoint-lg) {
+      padding: 48px 0;
+    }
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+
+    @media screen and (max-width: $breakpoint-lg) {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    &__content {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 24px;
+        grid-template-columns: 1fr;
 
-        &__content {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-
-            h1 {
-                font-size: 38px;
-                line-height: 40px;
-                font-weight: 900;
-                margin-bottom: 12px;
-            }
-            p {
-                font-size: 20px;
-                line-height: 28px;
-                font-weight: 500;
-                margin-bottom: 16px;
-            }
+        @media screen and (max-width: $breakpoint-lg) {
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
         }
-        &__image {
-            border-radius: 16px;
-        }
+    }
 
-        &__calculator {
-            background-color: $gray-50;
-            padding: 24px 0;
-            border-radius: 16px;
+    &__text {
+        h1 {
+            font-size: 38px;
+            line-height: 40px;
+            font-weight: 900;
+            margin-bottom: 12px;
 
-            h2 {
+            @media screen and (max-width: $breakpoint-lg) {
                 font-size: 30px;
                 line-height: 36px;
-                font-weight: 700;
-                text-align: center;
-                margin-bottom: 16px;
             }
-
-            p {
-                font-size: 16px;
-                line-height: 24px;
-                font-weight: 500;
-                text-align: center;
-                margin-bottom: 28px;
-            }
-
-            form {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 24px;
-                max-width: 500px;
-                margin: 0 auto;
-
-                input:first-child {
-                    grid-column: span 2;
-                }
-
-                button {
-                    grid-column: span 2;
-                }
-            }
+        }
+        p {
+            font-size: 20px;
+            line-height: 28px;
+            font-weight: 500;
+            margin-bottom: 16px;
         }
     }
 
-    .benefits {
-        margin-top: 72px;
+    &__image {
+        border-radius: 16px;
+        width: 100%;
+        align-self: end;
 
-        &__grid-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            margin-top: 24px;
-        }
-
-        .benefit-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 24px;
-
-            &__title {
-                font-size: 24px;
-                line-height: 32px;
-                font-weight: 900;
-            }
-            &__text {
-                font-size: 14px;
-                line-height: 20px;
-                font-weight: 500;
-            }
-        }
     }
 
-    .guarantee {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 72px;
+    &__calculator {
+        background-color: $gray-50;
+        padding: 24px 0;
+        border-radius: 16px;
 
         h2 {
-            margin-bottom: 12px;
+            font-size: 30px;
+            line-height: 36px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 16px;
         }
+
         p {
             font-size: 16px;
             line-height: 24px;
-            margin-bottom: 24px;
+            font-weight: 500;
             text-align: center;
-            max-width: 756px;
+            margin-bottom: 28px;
         }
 
-        &__document-container {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-        }
-    }
-
-    .reviews {
-        margin-top: 72px;
-        padding-bottom: 72px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        position: relative;
-
-        h2 {
-            margin-bottom: 32px;
-        }
-
-        &__slider {
-            width: calc(100% - 260px);
-            overflow: hidden;
-
-            .swiper-button-prev,
-            .swiper-button-next {
-                position: absolute;
-                top: 40%;
-            }
-
-            .swiper-button-prev {
-                left: 22px;
-            }
-
-            .swiper-button-next {
-                right: 22px;
-            }
-        }
-
-        .review-item {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-            height: auto;
-            border-radius: 16px;
-            background-color: $gray-50;
-            padding: 32px 43px;
-
-            &__text {
-                font-size: 24px;
-                line-height: 32px;
-                font-weight: 700;
-            }
-
-            &__name {
-                font-size: 24px;
-                line-height: 32px;
-                color: $gray-500;
-            }
-
-            &__quotes {
-                position: absolute;
-                right: 18px;
-                bottom: 8px;
-            }
-        }
-    }
-
-    .contact {
-        background-color: $gray-50;
-        border-radius: 16px;
-        padding: 64px 0;
-
-        h2 {
-            margin-bottom: 32px;
-        }
-
-        &__form {
-            max-width: 500px;
-            margin: auto;
+        form {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 24px;
+            max-width: 500px;
+            margin: 0 auto;
 
-            textarea {
+            input:first-child {
                 grid-column: span 2;
-                height: 150px;
             }
 
             button {
@@ -394,14 +287,202 @@ main {
     }
 }
 
+.benefits {
+    margin-top: 72px;
+
+    @media screen and (max-width: $breakpoint-lg) {
+        margin-top: 48px;
+    }
+
+    &__grid-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-top: 24px;
+
+        @media screen and (max-width: $breakpoint-lg) {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    .benefit-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 24px;
+
+        &__title {
+            font-size: 24px;
+            line-height: 32px;
+            font-weight: 900;
+        }
+        &__text {
+            font-size: 14px;
+            line-height: 20px;
+            font-weight: 500;
+        }
+    }
+}
+
+.guarantee {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 72px;
+
+    @media screen and (max-width: $breakpoint-lg) {
+        margin-top: 48px;
+    }
+
+    h2 {
+        margin-bottom: 12px;
+    }
+    p {
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 24px;
+        text-align: center;
+        max-width: 756px;
+    }
+
+    &__document-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+
+        @media screen and (max-width: $breakpoint-lg) {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+}
+
+.reviews {
+    margin-top: 72px;
+    padding-bottom: 72px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+
+    @media screen and (max-width: $breakpoint-lg) {
+        padding-bottom: 48px;
+        margin-top: 48px;
+    }
+
+    h2 {
+        margin-bottom: 32px;
+    }
+
+    &__slider {
+        width: calc(100% - (130px * 2));
+        overflow: hidden;
+
+        @media screen and (max-width: $breakpoint-lg) {
+            width: calc(100% - (105px * 2))
+        }
+
+        .swiper-button-prev,
+        .swiper-button-next {
+            position: absolute;
+            top: 40%;
+        }
+
+        .swiper-button-prev {
+            left: 22px;
+
+            @media screen and (max-width: $breakpoint-lg) {
+                left: 10px;
+            }
+        }
+
+        .swiper-button-next {
+            right: 22px;
+
+            @media screen and (max-width: $breakpoint-lg) {
+                right: 10px;
+            }
+        }
+    }
+
+    .review-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        height: auto;
+        border-radius: 16px;
+        background-color: $gray-50;
+        padding: 32px 43px;
+
+        @media screen and (max-width: $breakpoint-lg) {
+            padding: 16px;
+        }
+
+        &__text {
+            font-size: 24px;
+            line-height: 32px;
+            font-weight: 700;
+
+            @media screen and (max-width: $breakpoint-lg) {
+                font-size: 18px;
+                line-height: 28px;
+            }
+        }
+
+        &__name {
+            font-size: 24px;
+            line-height: 32px;
+            color: $gray-500;
+
+            @media screen and (max-width: $breakpoint-lg) {
+                font-size: 16px;
+                line-height: 24px;
+            }
+        }
+
+        &__quotes {
+            position: absolute;
+            right: 18px;
+            bottom: 8px;
+        }
+    }
+}
+
+.contact {
+    background-color: $gray-50;
+    border-radius: 16px;
+    padding: 64px 0;
+
+    h2 {
+        margin-bottom: 32px;
+    }
+
+    &__form {
+        max-width: 500px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+
+        textarea {
+            grid-column: span 2;
+            height: 150px;
+        }
+
+        button {
+            grid-column: span 2;
+        }
+    }
+}
+
 .footer {
     background-color: $gray-900;
     padding: 40px 0;
 
     &__top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 
     &__copy {
@@ -429,52 +510,64 @@ main {
     }
 
     &__phone {
-      padding-left: 12px;
-      text-align: end;
-      h1 {
-          font-size: 36px;
-          line-height: 40px;
-          font-weight: 900;
-          color: $gray-50;
-      }
+        padding-left: 12px;
+        text-align: end;
+        h1 {
+            font-size: 36px;
+            line-height: 40px;
+            font-weight: 900;
+            color: $gray-50;
 
-      p {
-          font-size: 24px;
-          line-height: 32px;
-          font-weight: 300;
-          color: $gray-50;
-      }
+            @media screen and (max-width: $breakpoint-lg) {
+                font-size: 30px;
+                line-height: 36px;
+            }
+        }
+
+        p {
+            font-size: 24px;
+            line-height: 32px;
+            font-weight: 300;
+            color: $gray-50;
+
+            @media screen and (max-width: $breakpoint-lg) {
+                font-size: 20px;
+                line-height: 28px;
+            }
+        }
     }
 
     &__bottom {
-      padding-top: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10%;
+        padding-top: 24px;
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        gap: 10%;
+
+        @media screen and (max-width: $breakpoint-lg) {
+            gap: 5%;
+        }
     }
 
     &__bottom-left {
-      p {
-        color: $gray-500;
-        font-size: 12px;
-        line-height: 16px;
-      }
+        p {
+            color: $gray-500;
+            font-size: 12px;
+            line-height: 16px;
+        }
     }
 
     &__bottom-right {
-      
-      p {
-        text-wrap: nowrap;
-        text-align: end;
-        color: $gray-500;
-        font-size: 12px;
-        line-height: 16px;
-      }
+        p {
+            text-wrap: nowrap;
+            text-align: end;
+            color: $gray-500;
+            font-size: 12px;
+            line-height: 16px;
+        }
 
-      a {
-        color: $gray-500;
-        
-      }
+        a {
+            color: $gray-500;
+        }
     }
 }
