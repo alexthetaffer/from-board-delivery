@@ -39,6 +39,10 @@ body {
         @media screen and (max-width: $breakpoint-lg) {
             max-width: calc($breakpoint-md + (15px * 2));
         }
+
+        @media screen and (max-width: $breakpoint-md) {
+            max-width: calc($breakpoint-sm + (15px * 2));
+        }
     }
 
     button {
@@ -123,6 +127,10 @@ body {
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        @media screen and (max-width: $breakpoint-md) {
+            margin-bottom: 0;
+        }
     }
 
     &__info {
@@ -136,6 +144,10 @@ body {
         line-height: 24px;
         border-right: 1px solid $purple-400;
         padding-right: 12px;
+
+        @media screen and (max-width: $breakpoint-md) {
+            display: none;
+        }
     }
 
     &__info-phone {
@@ -150,6 +162,11 @@ body {
                 font-size: 30px;
                 line-height: 36px;
             }
+
+            @media screen and (max-width: $breakpoint-md) {
+                font-size: 24px;
+                line-height: 32px;
+            }
         }
 
         p {
@@ -161,6 +178,11 @@ body {
                 font-size: 20px;
                 line-height: 28px;
             }
+
+            @media screen and (max-width: $breakpoint-md) {
+                font-size: 16px;
+                line-height: 24px;
+            }
         }
     }
 
@@ -168,6 +190,15 @@ body {
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        @media screen and (max-width: $breakpoint-md) {
+            $border: 2px solid $purple-400;
+            margin-top: 12px;
+            border-top: $border;
+            border-bottom: $border;
+
+            padding: 12px 0;
+        }
     }
 
     &__nav {
@@ -190,6 +221,18 @@ body {
             border-color: $purple-500;
         }
     }
+
+    &__price-m {
+        display: none;
+
+        @media screen and (max-width: $breakpoint-md) {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 12px;
+            text-align: center;
+        }
+    }
 }
 
 main {
@@ -197,7 +240,7 @@ main {
     padding: 72px 0;
 
     @media screen and (max-width: $breakpoint-lg) {
-      padding: 48px 0;
+        padding: 48px 0;
     }
 }
 
@@ -218,6 +261,10 @@ main {
         @media screen and (max-width: $breakpoint-lg) {
             grid-template-columns: 1fr 1fr;
             gap: 16px;
+        }
+
+        @media screen and (max-width: $breakpoint-md) {
+            grid-template-columns: 1fr;
         }
     }
 
@@ -245,7 +292,6 @@ main {
         border-radius: 16px;
         width: 100%;
         align-self: end;
-
     }
 
     &__calculator {
@@ -310,16 +356,33 @@ main {
         align-items: center;
         gap: 12px;
         padding: 24px;
+        align-self: start;
+
+        @media screen and (max-width: $breakpoint-md) {
+            padding: 0;
+        }
 
         &__title {
             font-size: 24px;
             line-height: 32px;
             font-weight: 900;
+
+            @media screen and (max-width: $breakpoint-md) {
+                font-size: 20px;
+                line-height: 28px;
+            }
         }
         &__text {
             font-size: 14px;
             line-height: 20px;
             font-weight: 500;
+        }
+
+        &__image {
+            @media screen and (max-width: $breakpoint-md) {
+                width: 108px;
+                height: auto;
+            }
         }
     }
 }
@@ -339,6 +402,7 @@ main {
     }
     p {
         font-size: 16px;
+        font-weight: 500;
         line-height: 24px;
         margin-bottom: 24px;
         text-align: center;
@@ -378,7 +442,7 @@ main {
         overflow: hidden;
 
         @media screen and (max-width: $breakpoint-lg) {
-            width: calc(100% - (105px * 2))
+            width: calc(100% - (105px * 2));
         }
 
         .swiper-button-prev,
@@ -496,6 +560,21 @@ main {
         display: flex;
         gap: 24px;
         padding: 10px 0;
+
+        &--m {
+            display: none;
+
+            @media screen and (max-width: $breakpoint-md) {
+                display: flex;
+                justify-content: center;
+            }
+        }
+
+        &--dt {
+            @media screen and (max-width: $breakpoint-md) {
+                display: none;
+            }
+        }
     }
 
     &__nav-link {
@@ -547,6 +626,11 @@ main {
         @media screen and (max-width: $breakpoint-lg) {
             gap: 5%;
         }
+
+        @media screen and (max-width: $breakpoint-md) {
+            flex-direction: column;
+            text-align: center;
+        }
     }
 
     &__bottom-left {
@@ -554,6 +638,7 @@ main {
             color: $gray-500;
             font-size: 12px;
             line-height: 16px;
+            opacity: 0.7;
         }
     }
 
@@ -568,6 +653,13 @@ main {
 
         a {
             color: $gray-500;
+        }
+
+        @media screen and (max-width: $breakpoint-md) {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 8px;
         }
     }
 }
